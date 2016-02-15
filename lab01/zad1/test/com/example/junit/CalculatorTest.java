@@ -2,7 +2,12 @@ package com.example.junit;
 
 import static org.junit.Assert.*;
 
+import org.junit.matchers.*;
+
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 
 /**
  * Created by Konrad on 15.02.2016.
@@ -40,5 +45,21 @@ public class CalculatorTest {
     public void greaterCheck(){
 
         assertTrue(calc.greater(6,2));
+    }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    /*
+    @Test
+    public void divZeroCheck() throws ArithmeticException{
+
+        calc.div(5,0);
+        thrown.expect(ArithmeticException.class);
+        //thrown.expectMessage("/ by zero ");
+    }
+    */
+    @Test(expected = ArithmeticException.class)
+    public void empty() {
+        calc.div(5,0);
     }
 }
