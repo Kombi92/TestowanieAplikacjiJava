@@ -11,5 +11,7 @@ public class LiczbaRzymska {
         this.liczba = liczba;
     }
 
-    public toString(){}
+    public String toString(int l){
+        return "";
+    }
 }
