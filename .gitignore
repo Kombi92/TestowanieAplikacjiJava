@@ -4,6 +4,7 @@ ehthumbs.db
 
 #idea folder
 .idea
+out
 
 # Folder config file
 Desktop.ini
