@@ -5,7 +5,7 @@ ehthumbs.db
 #idea folder
 .idea
 out
-target
+target/
 *.iml
 */target/**
 
