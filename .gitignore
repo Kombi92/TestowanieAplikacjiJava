@@ -5,6 +5,7 @@ ehthumbs.db
 #idea folder
 .idea
 out
+target
 
 # Folder config file
 Desktop.ini
@@ -49,3 +50,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.zip
+*.tzg
+*.tar
+log
