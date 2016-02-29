@@ -8,6 +8,7 @@ out
 target/
 *.iml
 */target/**
+out
 
 # Folder config file
 Desktop.ini
