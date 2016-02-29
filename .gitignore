@@ -6,6 +6,7 @@ ehthumbs.db
 .idea
 out
 target
+*.iml
 
 # Folder config file
 Desktop.ini
