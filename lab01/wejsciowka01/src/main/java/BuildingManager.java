@@ -6,11 +6,11 @@ import java.util.List;
  */
 public class BuildingManager {
 
-    public Building build = new Building();
+    public static Building build = new Building();
 
-    List<Building> lista = new ArrayList<Building>();
+    static List<Building> lista = new ArrayList<Building>();
 
-    public void add(int ilosc, String nazwa, double wysokosc){
+    public static void add(int ilosc, String nazwa, double wysokosc){
         build = new Building(ilosc,nazwa,wysokosc);
         lista.add(build);
     }

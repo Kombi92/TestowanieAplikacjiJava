@@ -9,11 +9,15 @@ import org.junit.rules.ExpectedException;
  */
 public class BuildingManagerTest {
 
-    private Building build= new Building();
+    private Building build= new Building(6, "duzy",17.5 );
 
 
     @Test
     public void addcheck(){
+
+        BuildingManager.add(6,"duzy",17.5);
+
+        assertEquals(BuildingManager.lista.get(0) , build);
 
     }
 
