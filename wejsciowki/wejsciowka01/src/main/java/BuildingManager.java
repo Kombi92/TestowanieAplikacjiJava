@@ -15,8 +15,13 @@ public class BuildingManager {
         lista.add(build);
     }
 
-    public void delete(Building del_build){
+    public static void delete(Building del_build){
         lista.remove(del_build);
     }
+
+    public static int getIlosc(Building build){
+        return build.ilosc_mieszkan;
+    }
+
 
 }
