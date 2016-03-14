@@ -8,6 +8,10 @@ public class BuildingManager {
 
     public static Building build = new Building();
 
+    private IMyList list;
+
+    public BuildingManager(IMyList list) { this.list = list;}
+
     static List<Building> lista = new ArrayList<Building>();
 
     public static void add(int ilosc, String nazwa, double wysokosc){
