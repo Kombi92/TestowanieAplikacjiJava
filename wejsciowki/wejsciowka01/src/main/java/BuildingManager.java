@@ -6,36 +6,54 @@ import java.util.List;
  */
 public class BuildingManager {
 
-    public static Building build = new Building();
+    public  Building build = new Building();
 
-    private static IMyList list;
+   // private  IMyList list;
 
-    public BuildingManager(IMyList list) { this.list = list;}
+    //public BuildingManager(IMyList list) { this.lista = lista;}
 
-  //  static List<Building> lista = new ArrayList<Building>();
+    List<Building> lista = new ArrayList<Building>();
 
-    public static boolean add(int ilosc, String nazwa, double wysokosc){
+    public  boolean add(int ilosc, String nazwa, double wysokosc){
         build = new Building(ilosc,nazwa,wysokosc);
-        list.add(build);
+        lista.add(build);
         return true;
     }
 
-    public static boolean add(Building b){
-        list.add(b);
+    public  boolean add(Building b){
+        lista.add(b);
         return true;
     }
 
-    public static boolean delete(Building del_build){
-        list.remove(del_build);
+    public  boolean delete(Building del_build){
+        lista.remove(del_build);
         return true;
     }
 
-    public static boolean getAll(){
-        list.getAll();
-        return true;
+    public List<Building> getAll(){
+        return lista;
+        //return true;
     }
 
-    public static int getIlosc(Building build){
+    public boolean findByName(String name){
+        for(Building b: lista){
+            if(b.getNazwa_budynku().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean findByIlosc(int ilosc){
+        for(Building b: lista){
+            if(b.getIlosc_mieszkan() == ilosc){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getIlosc(Building build){
         return build.ilosc_mieszkan;
     }
 

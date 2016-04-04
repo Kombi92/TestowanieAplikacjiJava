@@ -5,24 +5,24 @@ import java.util.List;
  */
 public class Run {
 
-    public static void main(){
+    private IMyList buildMan;
 
-        BuildingManager man = new BuildingManager(new IMyList(){
-            @Override
-            public boolean add(Building b) {
-                if(b.ilosc_mieszkan == 15) return true;
-                return true;
-            }
-            @Override
-            public List remove(Building b) {
-                return null;
-            }
-            @Override
-            public List getAll() {
-                return null;
-            }
-
-
-        });
+    public Run(IMyList buildMan){
+        this.buildMan = buildMan;
+    }
+    public boolean add(Building b) {
+        return buildMan.add(b);
+    }
+    public boolean remove(Building b) {
+        return buildMan.remove(b);
+    }
+    public List<Building> getAll() {
+        return buildMan.getAll();
+    }
+    public boolean findByName(String name){
+        return buildMan.findByName(name);
+    }
+    public boolean findByIlosc(int  ilosc){
+        return buildMan.findByIlosc(ilosc);
     }
 }
