@@ -1,3 +1,8 @@
+package com.example;
+
+import com.example.Building;
+import com.example.IMyList;
+import com.example.Run;
 import org.junit.Before;
 import org.junit.Test;
 
