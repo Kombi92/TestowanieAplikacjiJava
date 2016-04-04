@@ -20,13 +20,13 @@ import static org.junit.Assert.*;
  */
 public class BuildingMockTest {
 
-    private Run myMan;
+    private BuildingManager myMan;
     private IMyList mock;
 
     @Before
     public void setUp(){
         mock = createMock(IMyList.class);
-        myMan = new Run(mock);
+        myMan = new BuildingManager(mock);
     }
 
     @Test
@@ -43,14 +43,14 @@ public class BuildingMockTest {
         expect(mock.add(b)).andReturn(true).atLeastOnce();
         expect(mock.remove(b)).andReturn(true).atLeastOnce();
         expect(mock.getAll()).andReturn(buildings).atLeastOnce();
-        expect(mock.findByName(NazwaBudynku)).andReturn(true).atLeastOnce();
-        expect(mock.findByAmount(IloscMieszkan)).andReturn(true).atLeastOnce();
+        expect(mock.findByName(NazwaBudynku)).andReturn(b).atLeastOnce();
+        expect(mock.findByAmount(IloscMieszkan)).andReturn(b).atLeastOnce();
         replay(mock);
         assertEquals(true, myMan.add(b));
         assertEquals(NazwaBudynku, myMan.getAll().get(0).getNazwaBudynku());
         assertEquals(true, myMan.remove(b));
-        assertEquals(true, myMan.findByName(NazwaBudynku));
-        assertEquals(true, myMan.findByAmount(IloscMieszkan));
+        assertEquals(b, myMan.findByName(NazwaBudynku));
+        assertEquals(b, myMan.findByAmount(IloscMieszkan));
 
         verify(mock);
     }

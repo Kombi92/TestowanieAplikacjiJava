@@ -10,6 +10,6 @@ public interface IMyList {
     boolean add(Building b);
     boolean remove(Building b);
     List<Building> getAll();
-    boolean findByName(String name);
-    boolean findByAmount(int ilosc);
+    Building findByName(String name);
+    Building findByAmount(int ilosc);
 }

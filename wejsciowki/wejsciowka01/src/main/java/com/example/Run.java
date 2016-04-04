@@ -21,10 +21,10 @@ public class Run {
     public List<Building> getAll() {
         return buildMan.getAll();
     }
-    public boolean findByName(String name){
+    public Building findByName(String name){
         return buildMan.findByName(name);
     }
-    public boolean findByAmount(int  ilosc){
+    public Building findByAmount(int  ilosc){
         return buildMan.findByAmount(ilosc);
     }
 }
