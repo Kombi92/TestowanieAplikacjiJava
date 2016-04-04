@@ -22,7 +22,7 @@ public class Run {
     public boolean findByName(String name){
         return buildMan.findByName(name);
     }
-    public boolean findByIlosc(int  ilosc){
-        return buildMan.findByIlosc(ilosc);
+    public boolean findByAmount(int  ilosc){
+        return buildMan.findByAmount(ilosc);
     }
 }

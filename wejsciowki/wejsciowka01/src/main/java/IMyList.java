@@ -9,5 +9,5 @@ public interface IMyList {
     boolean remove(Building b);
     List<Building> getAll();
     boolean findByName(String name);
-    boolean findByIlosc(int ilosc);
+    boolean findByAmount(int ilosc);
 }

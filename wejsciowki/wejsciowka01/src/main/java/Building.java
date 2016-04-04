@@ -10,9 +10,9 @@ public class Building {
     public Building() {
     }
 
-    public Building(int ilosc_mieszkan, String nazwa_budynku, double wysokosc) {
+    public Building(int ilosc_mieszkan, String nazwaBudynku, double wysokosc) {
         this.ilosc_mieszkan = ilosc_mieszkan;
-        this.nazwa_budynku = nazwa_budynku;
+        this.nazwa_budynku = nazwaBudynku;
         this.wysokosc = wysokosc;
     }
 
@@ -24,19 +24,19 @@ public class Building {
         this.wysokosc = wysokosc;
     }
 
-    public int getIlosc_mieszkan() {
+    public int getIloscMieszkan() {
         return ilosc_mieszkan;
     }
 
-    public void setIlosc_mieszkan(int ilosc_mieszkan) {
+    public void setIloscMieszkan(int ilosc_mieszkan) {
         this.ilosc_mieszkan = ilosc_mieszkan;
     }
 
-    public String getNazwa_budynku() {
+    public String getNazwaBudynku() {
         return nazwa_budynku;
     }
 
-    public void setNazwa_budynku(String nazwa_budynku) {
-        this.nazwa_budynku = nazwa_budynku;
+    public void setNazwaBudynku(String nazwaBudynku) {
+        this.nazwa_budynku = nazwaBudynku;
     }
 }

@@ -37,16 +37,16 @@ public class BuildingManager {
 
     public boolean findByName(String name){
         for(Building b: lista){
-            if(b.getNazwa_budynku().equals(name)){
+            if(b.getNazwaBudynku().equals(name)){
                 return true;
             }
         }
         return false;
     }
 
-    public boolean findByIlosc(int ilosc){
+    public boolean findByAmount(int ilosc){
         for(Building b: lista){
-            if(b.getIlosc_mieszkan() == ilosc){
+            if(b.getIloscMieszkan() == ilosc){
                 return true;
             }
         }

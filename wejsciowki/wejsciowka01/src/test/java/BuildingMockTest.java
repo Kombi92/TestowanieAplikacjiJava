@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,21 +27,25 @@ public class BuildingMockTest {
     @Test
     public void listCheck(){
 
-        Building b = new Building(15,"tak",15.5);
+        final int IloscMieszkan = 15;
+        final String NazwaBudynku = "Sloneczny";
+        final double WysokoscBudynku = 15.5;
+
+        Building b = new Building(IloscMieszkan,NazwaBudynku,WysokoscBudynku);
         List<Building> buildings = new ArrayList<Building>();
         buildings.add(b);
 
         expect(mock.add(b)).andReturn(true).atLeastOnce();
         expect(mock.remove(b)).andReturn(true).atLeastOnce();
         expect(mock.getAll()).andReturn(buildings).atLeastOnce();
-        expect(mock.findByName("tak")).andReturn(true).atLeastOnce();
-        expect(mock.findByIlosc(15)).andReturn(true).atLeastOnce();
+        expect(mock.findByName(NazwaBudynku)).andReturn(true).atLeastOnce();
+        expect(mock.findByAmount(IloscMieszkan)).andReturn(true).atLeastOnce();
         replay(mock);
         assertEquals(true, myMan.add(b));
-        assertEquals("tak", myMan.getAll().get(0).getNazwa_budynku());
+        assertEquals(NazwaBudynku, myMan.getAll().get(0).getNazwaBudynku());
         assertEquals(true, myMan.remove(b));
-        assertEquals(true, myMan.findByName("tak"));
-        assertEquals(true, myMan.findByIlosc(15));
+        assertEquals(true, myMan.findByName(NazwaBudynku));
+        assertEquals(true, myMan.findByAmount(IloscMieszkan));
 
         verify(mock);
     }
