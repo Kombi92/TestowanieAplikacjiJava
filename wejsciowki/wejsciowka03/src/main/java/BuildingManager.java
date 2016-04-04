@@ -6,39 +6,44 @@ import java.util.List;
  */
 public class BuildingManager {
 
-    public static Building build = new Building();
+    public  Building build = new Building();
 
-    private static IMyList list;
+    List<Building> lista = new ArrayList<Building>();
 
-    public BuildingManager(IMyList list) { this.list = list;}
-
-  //  static List<Building> lista = new ArrayList<Building>();
-
-    public static boolean add(int ilosc, String nazwa, double wysokosc){
+    public  boolean add(int ilosc, String nazwa, double wysokosc){
         build = new Building(ilosc,nazwa,wysokosc);
-        list.add(build);
+        lista.add(build);
         return true;
     }
 
-    public static boolean add(Building b){
-        list.add(b);
-        return true;
+    public void add(Building b){
+        lista.add(b);
     }
 
-    public static boolean delete(Building del_build){
-        list.remove(del_build);
-        return true;
+    public void delete(Building del_build){
+        lista.remove(del_build);
     }
 
-    public static boolean getAll(){
-        list.getAll();
-        return true;
+    public List<Building>  getAll(){
+        return lista;
     }
 
-    public static int getIlosc(Building build){
-        return build.ilosc_mieszkan;
+    public boolean findbyNazwa(String nazwa) {
+        for(Building b: lista) {
+            if(b.getNazwa_budynku().equals(nazwa)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-
+    public boolean findbyIlosc(int ilosc) {
+        for(Building b: lista) {
+            if(b.getIlosc_mieszkan()==ilosc) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

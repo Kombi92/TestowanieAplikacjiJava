@@ -6,6 +6,8 @@ import java.util.List;
 public interface IMyList {
 
     boolean add(Building b);
-    List remove(Building b);
-    List getAll();
+    boolean remove(Building b);
+    List<Building> getAll();
+    boolean findByNazwa(String Nazwa);
+    boolean findByIlosc(int ilosc_mieszkan);
 }
