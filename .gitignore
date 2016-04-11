@@ -4,6 +4,9 @@ ehthumbs.db
 
 #idea folder
 .idea
+.classpath
+.project
+.settings
 out
 target/
 *.iml
