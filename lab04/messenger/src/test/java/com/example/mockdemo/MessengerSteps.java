@@ -27,7 +27,7 @@ public class MessengerSteps extends Steps{
     public void connectTo(String a){
         server = a;
     }
-
+//
     @Then("connection should return $result")
     public void shouldConnect(int result){
         assertEquals(result, mess.testConnection(server));

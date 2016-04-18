@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -9,13 +10,15 @@ import java.util.List;
 public class BuildingManager {
 
     public  Building build = new Building();
+    public  Building del_build;
 
-   // private  IMyList list;
-    public IMyList lista;
+    //public IMyList lista;
 
-    public BuildingManager(IMyList lista) { this.lista = lista;}
+    public BuildingManager() {lista = new ArrayList<Building>();}
 
-    //List<Building> lista = new ArrayList<Building>();
+   // public BuildingManager(IMyList lista) { this.lista = lista;}
+
+    List<Building> lista = new ArrayList<Building>();
 
     public  boolean add(int ilosc, String nazwa, double wysokosc){
         build = new Building(ilosc,nazwa,wysokosc);
@@ -33,36 +36,49 @@ public class BuildingManager {
         return true;
     }
 
-    public List<Building> getAll(){
-        return lista.getAll();
-        //return true;
+    public  boolean remove(int ilosc, String nazwa, double wysokosc){
+        del_build = new Building(ilosc,nazwa,wysokosc);
+
+        lista.remove(del_build);
+        lista.
+
+        return true;
     }
 
-    public Building findByName(String name){
-//        for(Building b: lista.getAll()){
-//            if(b.getNazwaBudynku().equals(name)){
-//                return true;
-//            }
-//        }
-//        return false;
-        return lista.findByName(name);
+    public int getAmount(){
+        return lista.size();
+        }
 
-    }
-
-    public Building findByAmount(int ilosc){
-//        for(Building b: lista.getAll()){
-//            if(b.getIloscMieszkan() == ilosc){
-//                return true;
-//            }
-//        }
-//        return false;
-        return lista.findByAmount(ilosc);
-    }
-
-    public int getIlosc(Building build){
-        return build.ilosc_mieszkan;
-    }
-
-
+//    public List<Building> getAll(){
+//        return lista.getAll();
+//        //return true;
+//    }
+//
+//    public Building findByName(String name){
+////        for(Building b: lista.getAll()){
+////            if(b.getNazwaBudynku().equals(name)){
+////                return true;
+////            }
+////        }
+////        return false;
+//        return lista.findByName(name);
+//
+//    }
+//
+//    public Building findByAmount(int ilosc){
+////        for(Building b: lista.getAll()){
+////            if(b.getIloscMieszkan() == ilosc){
+////                return true;
+////            }
+////        }
+////        return false;
+//        return lista.findByAmount(ilosc);
+//    }
+//
+//    public int getIlosc(Building build){
+//        return build.ilosc_mieszkan;
+//    }
+//
+//
 
 }

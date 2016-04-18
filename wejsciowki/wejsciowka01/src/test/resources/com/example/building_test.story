@@ -6,11 +6,14 @@ I want to perform an action
 So that I can achieve a business goal
 
 Scenario: scenario description
-Given a building
-When set wysokosc 10
-Then wysokosc should be 10
+
 
 Given a list
-When get by nazwa Sloneczny
-Then wysokosc should be 15.5
+When add to list Nazwa: Sloneczny Wysokosc: 15.5 Ilosc: 15
+Then should return 1
 
+When add to list Nazwa: Ladny Wysokosc: 10.5 Ilosc: 10
+Then should return 2
+
+When remove from Nazwa: Ladny Wysokosc: 10.5 Ilosc: 10
+Then after delete should return 1
