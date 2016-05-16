@@ -44,7 +44,7 @@
         <hashTree/>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert Request" enabled="true">
           <stringProp name="dataSource">myhsqldbpool</stringProp>
-          <stringProp name="query">INSERT INTO PERSON (name,yob) VALUES(&apos;Kazik&apos;,2015);</stringProp>
+          <stringProp name="query">INSERT INTO PERSON (name,yob) VALUES(&apos;Kazik&apos;,${Yob});</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -53,7 +53,17 @@
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
         </JDBCSampler>
-        <hashTree/>
+        <hashTree>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">2016</stringProp>
+            <stringProp name="minimumValue">1960</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">false</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Yob</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+        </hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Select Request" enabled="true">
           <stringProp name="dataSource">myhsqldbpool</stringProp>
           <stringProp name="queryType">Select Statement</stringProp>
