@@ -6,6 +6,8 @@ import com.example.restproject.service.OwnerManager;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Konrad on 29.05.2016.
@@ -18,7 +20,7 @@ public class OwnerRESTService{
         @GET
         @Path("/{ownerId}")
         @Produces(MediaType.APPLICATION_JSON)
-        public Owner getPerson(@PathParam("ownerId") Long id){
+        public Owner getOwners(@PathParam("ownerId") Long id){
             Owner o  = om.getOwner(id);
             return o;
         }
@@ -29,6 +31,14 @@ public class OwnerRESTService{
         public Response addOwner(Owner owner){
             om.addOwner(owner);
             return Response.status(201).entity("Owner").build();
+        }
+
+        @GET
+        @Path("/all")
+        @Produces(MediaType.APPLICATION_JSON)
+        public List<Owner> getOwners(){
+            List<Owner> o  = om.getAllOwners();
+            return o;
         }
 
 
