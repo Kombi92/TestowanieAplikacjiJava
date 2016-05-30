@@ -20,8 +20,10 @@ public class OwnerManager {
 
     private PreparedStatement addOwnerStmt;
     private PreparedStatement deleteAllOwnersStmt;
+    private PreparedStatement deleteOwnerByIdStmt;
     private PreparedStatement getAllOwnersStmt;
     private PreparedStatement getOwnerByIdStmt;
+    private PreparedStatement updateOwnerStmt;
 
     private Statement statement;
 
@@ -51,6 +53,10 @@ public class OwnerManager {
                     .prepareStatement("SELECT id, name, yob FROM Owner");
             getOwnerByIdStmt = connection
                     .prepareStatement("SELECT id, name, yob FROM Owner where id = ?");
+            deleteOwnerByIdStmt = connection
+                    .prepareStatement("DELETE FROM Owner where id = ?");
+            updateOwnerStmt = connection
+                    .prepareStatement("UPDATE OWNER SET name = ? , yob = ? where id = ?");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,9 +67,33 @@ public class OwnerManager {
         return connection;
     }
 
+    public int updateOwner(Owner owner) {
+        int count = 0;
+        try {
+            updateOwnerStmt.setString(1, owner.getFirstName());
+            updateOwnerStmt.setInt(2, owner.getYob());
+            updateOwnerStmt.setLong(3, owner.getId());
+
+            count = updateOwnerStmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
     public void clearOwners() {
         try {
             deleteAllOwnersStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteOwner(Long id) {
+        try {
+            deleteOwnerByIdStmt.setLong(1, id);
+            deleteOwnerByIdStmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

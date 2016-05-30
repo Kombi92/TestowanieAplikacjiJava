@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import static com.jayway.restassured.RestAssured.delete;
 import static com.jayway.restassured.RestAssured.get;
 import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.RestAssured.put;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 
@@ -18,6 +19,7 @@ import static org.hamcrest.Matchers.equalToIgnoringCase;
  */
 public class OwnerServiceTest {
     private static final String OWNER_FIRST_NAME = "Jasiu";
+    private static final String SECOND_OWNER_FIRST_NAME = "Stefan";
 
     @BeforeClass
     public static void setUp(){
@@ -27,7 +29,7 @@ public class OwnerServiceTest {
     }
 
     @Test
-    public void addPersons(){
+    public void addOwner(){
 
         delete("/owner/").then().assertThat().statusCode(200);
 
@@ -45,4 +47,72 @@ public class OwnerServiceTest {
 
     }
 
+    @Test
+    public void deleteOwner(){
+
+        Owner owner = new Owner(100L, SECOND_OWNER_FIRST_NAME, 1986);
+
+        given().
+                contentType(MediaType.APPLICATION_JSON).
+                body(owner).
+                when().
+                post("/owner/").then().assertThat().statusCode(201);
+
+        Owner rOwner = get("/owner/100").as(Owner.class);
+
+        assertThat(SECOND_OWNER_FIRST_NAME, equalToIgnoringCase(rOwner.getFirstName()));
+
+        delete("/owner/100").then().assertThat().statusCode(200);
+
+    }
+
+    @Test
+    public void updateOwner(){
+
+        delete("/owner/").then().assertThat().statusCode(200);
+
+        Owner owner = new Owner(1L, OWNER_FIRST_NAME, 1976);
+
+        given().
+                contentType(MediaType.APPLICATION_JSON).
+                body(owner).
+                when().
+                post("/owner/").then().assertThat().statusCode(201);
+
+        Owner rOwner = get("/owner/1").as(Owner.class);
+
+        assertThat(OWNER_FIRST_NAME, equalToIgnoringCase(rOwner.getFirstName()));
+
+        owner.setFirstName(SECOND_OWNER_FIRST_NAME);
+
+        given().
+                contentType(MediaType.APPLICATION_JSON).
+                body(owner).
+                when().
+                put("/owner/").then().assertThat().statusCode(201);
+
+        rOwner = get("/owner/1").as(Owner.class);
+
+        assertThat(SECOND_OWNER_FIRST_NAME, equalToIgnoringCase(rOwner.getFirstName()));
+    }
+    @Test
+    public void selectOwner(){
+
+        delete("/owner/").then().assertThat().statusCode(200);
+
+        Owner owner = new Owner(1L, OWNER_FIRST_NAME, 1976);
+
+        given().
+                contentType(MediaType.APPLICATION_JSON).
+                body(owner).
+                when().
+                post("/owner/").then().assertThat().statusCode(201);
+
+        Owner rOwner = get("/owner/1").as(Owner.class);
+
+        assertThat(OWNER_FIRST_NAME, equalToIgnoringCase(rOwner.getFirstName()));
+
+        
+
+    }
 }

@@ -33,6 +33,14 @@ public class OwnerRESTService{
             return Response.status(201).entity("Owner").build();
         }
 
+        @PUT
+        @Path("/")
+        @Consumes(MediaType.APPLICATION_JSON)
+        public Response updateOwner(Owner owner){
+            om.updateOwner(owner);
+            return Response.status(201).entity("Owner").build();
+        }
+
         @GET
         @Path("/all")
         @Produces(MediaType.APPLICATION_JSON)
@@ -40,8 +48,6 @@ public class OwnerRESTService{
             List<Owner> o  = om.getAllOwners();
             return o;
         }
-
-
         @GET
         @Path("/test")
         @Produces(MediaType.TEXT_HTML)
@@ -54,5 +60,12 @@ public class OwnerRESTService{
             om.clearOwners();
             return Response.status(200).build();
         }
+    @DELETE
+    @Path("/{ownerId}")
+    public Response deleteOwner(@PathParam("ownerId") Long id){
+        om.deleteOwner(id);
+        return Response.status(200).build();
+    }
+
 
 }
