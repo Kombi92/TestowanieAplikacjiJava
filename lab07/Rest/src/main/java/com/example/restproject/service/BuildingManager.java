@@ -26,6 +26,8 @@ public class BuildingManager {
     private PreparedStatement deleteAllBuildingsStmt;
     private PreparedStatement getAllBuildingsStmt;
     private PreparedStatement getBuildingByIdStmt;
+    private PreparedStatement updateBuildingStmt;
+    private PreparedStatement deleteBuildingByIdStmt;
 
     private Statement statement;
 
@@ -52,9 +54,13 @@ public class BuildingManager {
             deleteAllBuildingsStmt = connection
                     .prepareStatement("DELETE FROM Building");
             getAllBuildingsStmt = connection
-                    .prepareStatement("SELECT id, name, FloorArea FROM Building");
+                    .prepareStatement("SELECT id, name, FloorArea, idOwner FROM Building");
             getBuildingByIdStmt = connection
                     .prepareStatement("SELECT id, name, FloorArea FROM Building where id = ?");
+            deleteBuildingByIdStmt = connection
+                    .prepareStatement("DELETE FROM BUILDING where id = ?");
+            updateBuildingStmt = connection
+                    .prepareStatement("UPDATE BUILDING SET name = ? , FloorArea = ? where id = ?");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,6 +69,30 @@ public class BuildingManager {
 
     Connection getConnection() {
         return connection;
+    }
+
+    public int updateBuilding(Building building) {
+        int count = 0;
+        try {
+            updateBuildingStmt.setString(1, building.getName());
+            updateBuildingStmt.setInt(2,building.getFloorArea());
+            updateBuildingStmt.setLong(3, building.getId());
+
+            count = updateBuildingStmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    public void deleteBuilding(Long id) {
+        try {
+            deleteBuildingByIdStmt.setLong(1, id);
+            deleteBuildingByIdStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void clearBuildings() {

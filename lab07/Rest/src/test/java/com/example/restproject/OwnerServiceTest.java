@@ -95,24 +95,4 @@ public class OwnerServiceTest {
 
         assertThat(SECOND_OWNER_FIRST_NAME, equalToIgnoringCase(rOwner.getFirstName()));
     }
-    @Test
-    public void selectOwner(){
-
-        delete("/owner/").then().assertThat().statusCode(200);
-
-        Owner owner = new Owner(1L, OWNER_FIRST_NAME, 1976);
-
-        given().
-                contentType(MediaType.APPLICATION_JSON).
-                body(owner).
-                when().
-                post("/owner/").then().assertThat().statusCode(201);
-
-        Owner rOwner = get("/owner/1").as(Owner.class);
-
-        assertThat(OWNER_FIRST_NAME, equalToIgnoringCase(rOwner.getFirstName()));
-
-        
-
-    }
 }

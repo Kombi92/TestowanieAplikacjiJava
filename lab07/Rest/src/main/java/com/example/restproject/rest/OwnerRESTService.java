@@ -60,12 +60,12 @@ public class OwnerRESTService{
             om.clearOwners();
             return Response.status(200).build();
         }
-    @DELETE
-    @Path("/{ownerId}")
-    public Response deleteOwner(@PathParam("ownerId") Long id){
-        om.deleteOwner(id);
-        return Response.status(200).build();
-    }
+        @DELETE
+        @Path("/{ownerId}")
+        public Response deleteOwner(@PathParam("ownerId") Long id){
+            om.deleteOwner(id);
+            return Response.status(200).build();
+        }
 
 
 }
