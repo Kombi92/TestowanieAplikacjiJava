@@ -23,6 +23,7 @@ public class OwnerManager {
     private PreparedStatement deleteOwnerByIdStmt;
     private PreparedStatement getAllOwnersStmt;
     private PreparedStatement getOwnerByIdStmt;
+    private PreparedStatement getOwnerByNameStmt;
     private PreparedStatement updateOwnerStmt;
 
     private Statement statement;
@@ -53,6 +54,8 @@ public class OwnerManager {
                     .prepareStatement("SELECT id, name, yob FROM Owner");
             getOwnerByIdStmt = connection
                     .prepareStatement("SELECT id, name, yob FROM Owner where id = ?");
+            getOwnerByNameStmt = connection
+                    .prepareStatement("SELECT id, name, yob FROM Owner where name = ?");
             deleteOwnerByIdStmt = connection
                     .prepareStatement("DELETE FROM Owner where id = ?");
             updateOwnerStmt = connection
@@ -152,6 +155,27 @@ public class OwnerManager {
         }
 
         return o;
+    }
+
+    public List<Owner> getOwnersByName(String name) {
+        List<Owner> owners = new ArrayList<Owner>();
+        try {
+            getOwnerByNameStmt.setString(1, name);
+            ResultSet rs = getOwnerByNameStmt.executeQuery();
+
+            while (rs.next()) {
+                Owner o = new Owner();
+                o.setId(rs.getInt("id"));
+                o.setFirstName(rs.getString("name"));
+                o.setYob(rs.getInt("yob"));
+                owners.add(o);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return owners;
     }
 
 }

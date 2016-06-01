@@ -48,6 +48,15 @@ public class OwnerRESTService{
             List<Owner> o  = om.getAllOwners();
             return o;
         }
+
+        @GET
+        @Path("/name/{ownerName}")
+        @Produces(MediaType.APPLICATION_JSON)
+        public List<Owner> findOwner(@PathParam("ownerName") String name){
+            List<Owner> o  = om.getOwnersByName(name);
+            return o;
+        }
+
         @GET
         @Path("/test")
         @Produces(MediaType.TEXT_HTML)
