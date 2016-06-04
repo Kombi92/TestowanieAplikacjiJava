@@ -13,7 +13,6 @@ import java.util.List;
 import static com.jayway.restassured.RestAssured.delete;
 import static com.jayway.restassured.RestAssured.get;
 import static com.jayway.restassured.RestAssured.given;
-import static com.jayway.restassured.RestAssured.put;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -57,7 +56,7 @@ public class OwnerServiceTest {
 
         Owner owner = new Owner(1L, OWNER_FIRST_NAME, 1976);
         Owner owner2 = new Owner(2L, OWNER_FIRST_NAME, 1980);
-        Owner owner3 = new Owner(3L, SECOND_OWNER_FIRST_NAME, 1980);
+        Owner owner3 = new Owner(3L, SECOND_OWNER_FIRST_NAME, 1990);
 
         given().
                 contentType(MediaType.APPLICATION_JSON).
