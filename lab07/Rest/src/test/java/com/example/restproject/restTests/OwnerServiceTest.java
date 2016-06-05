@@ -1,4 +1,4 @@
-package com.example.restproject;
+package com.example.restproject.restTests;
 
 import com.example.restproject.domain.Owner;
 import com.jayway.restassured.RestAssured;

@@ -1,4 +1,4 @@
-package com.example.restproject;
+package com.example.restproject.restTests;
 
 import com.example.restproject.domain.Building;
 import com.example.restproject.domain.Owner;
@@ -26,6 +26,7 @@ public class BuildingServiceTest {
     private static final String BUILDING_NAME = "Drapacz";
     private static final int BUILDING_FLOORAREA = 150;
     private static final String SECOND_BUILDING_NAME = "Kopacz";
+    private static final int SECOND_BUILDING_FLOORAREA = 250;
 
     private static final String OWNER_FIRST_NAME = "Jasiu";
 
@@ -92,34 +93,36 @@ public class BuildingServiceTest {
         assertThat(rBuilding.getName(), is(nullValue())); //TODO: Make it work in owner
 
     }
-//
-//    @Test
-//    public void updateOwner(){
-//
-//        delete("/owner/").then().assertThat().statusCode(200);
-//
-//        Owner owner = new Owner(1L, OWNER_FIRST_NAME, 1976);
-//
-//        given().
-//                contentType(MediaType.APPLICATION_JSON).
-//                body(owner).
-//                when().
-//                post("/owner/").then().assertThat().statusCode(201);
-//
-//        Owner rOwner = get("/owner/1").as(Owner.class);
-//
-//        assertThat(OWNER_FIRST_NAME, equalToIgnoringCase(rOwner.getFirstName()));
-//
-//        owner.setFirstName(SECOND_OWNER_FIRST_NAME);
-//
-//        given().
-//                contentType(MediaType.APPLICATION_JSON).
-//                body(owner).
-//                when().
-//                put("/owner/").then().assertThat().statusCode(201);
-//
-//        rOwner = get("/owner/1").as(Owner.class);
-//
-//        assertThat(SECOND_OWNER_FIRST_NAME, equalToIgnoringCase(rOwner.getFirstName()));
-//    }
+
+    @Test
+    public void updateOwner(){
+
+        delete("/building/").then().assertThat().statusCode(200);
+
+        Building building = new Building(1L,BUILDING_NAME,BUILDING_FLOORAREA);
+
+        given().
+                contentType(MediaType.APPLICATION_JSON).
+                body(building).
+                when().
+                post("/building/").then().assertThat().statusCode(201);
+
+        Building rBuilding = get("/building/1").as(Building.class);
+
+        assertThat(BUILDING_NAME, equalToIgnoringCase(rBuilding.getName()));
+        assertThat(BUILDING_FLOORAREA, is(rBuilding.getFloorArea()));
+
+
+        building.setFloorArea(SECOND_BUILDING_FLOORAREA);
+
+        given().
+                contentType(MediaType.APPLICATION_JSON).
+                body(building).
+                when().
+                put("/building/").then().assertThat().statusCode(201);
+
+        rBuilding = get("/building/1").as(Building.class);
+
+        assertThat(SECOND_BUILDING_FLOORAREA, is(rBuilding.getFloorArea()));
+    }
 }

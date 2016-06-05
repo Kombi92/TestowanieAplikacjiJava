@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <BUILDING ID="1" NAME="Drapacz" FLOORAREA="150"/>
+  <OWNER ID="1" NAME="Jasiu" YOB="1976"/>
+  <OWNER ID="2" NAME="Jasiu" YOB="1980"/>
+  <OWNER ID="3" NAME="Stefan" YOB="1990"/>
+</dataset>
