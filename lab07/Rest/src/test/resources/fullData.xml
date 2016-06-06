@@ -3,5 +3,5 @@
   <BUILDING ID="1" NAME="Drapacz" FLOORAREA="150"/>
   <OWNER ID="1" NAME="Jasiu" YOB="1976"/>
   <OWNER ID="2" NAME="Jasiu" YOB="1980"/>
-  <OWNER ID="3" NAME="Stefan" YOB="1990"/>
+  <OWNER ID="0" NAME="Adrian" YOB="2010"/>
 </dataset>

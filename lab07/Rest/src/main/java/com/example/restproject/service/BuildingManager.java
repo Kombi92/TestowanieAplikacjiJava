@@ -56,7 +56,7 @@ public class BuildingManager {
             getAllBuildingsStmt = connection
                     .prepareStatement("SELECT id, name, FloorArea, idOwner FROM Building");
             getBuildingByIdStmt = connection
-                    .prepareStatement("SELECT id, name, FloorArea FROM Building where id = ?");
+                    .prepareStatement("SELECT id, name, FloorArea, idOwner FROM Building where id = ?");
             deleteBuildingByIdStmt = connection
                     .prepareStatement("DELETE FROM BUILDING where id = ?");
             updateBuildingStmt = connection
@@ -150,6 +150,7 @@ public class BuildingManager {
                 b.setId(rs.getInt("id"));
                 b.setName(rs.getString("name"));
                 b.setFloorArea(rs.getInt("FloorArea"));
+                b.setIdOwner(rs.getLong("idOwner"));
                 break;
             }
 

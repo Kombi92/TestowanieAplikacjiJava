@@ -75,7 +75,7 @@ public class DbUnitOwnerTest {
     @Test
     public void deleteOwner() throws Exception{
 
-        delete("/owner/3").then().assertThat().statusCode(200);
+        delete("/owner/1").then().assertThat().statusCode(200);
 
         IDataSet dbDataSet = connection.createDataSet();
         ITable actualTable = dbDataSet.getTable("OWNER");

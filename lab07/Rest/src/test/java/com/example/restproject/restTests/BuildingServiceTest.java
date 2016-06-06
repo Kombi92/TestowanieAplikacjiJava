@@ -90,7 +90,7 @@ public class BuildingServiceTest {
 
         rBuilding = get("/building/100").as(Building.class);
 
-        assertThat(rBuilding.getName(), is(nullValue())); //TODO: Make it work in owner
+        assertThat(rBuilding.getName(), is(nullValue()));
 
     }
 
@@ -124,5 +124,39 @@ public class BuildingServiceTest {
         rBuilding = get("/building/1").as(Building.class);
 
         assertThat(SECOND_BUILDING_FLOORAREA, is(rBuilding.getFloorArea()));
+    }
+    @Test
+    public void deleteOwnerWithBuilding(){
+
+        delete("/owner/").then().assertThat().statusCode(200);
+        delete("/building/").then().assertThat().statusCode(200);
+
+        Owner owner = new Owner(100L, OWNER_FIRST_NAME, 1986);
+        Building building = new Building(100L, SECOND_BUILDING_NAME, BUILDING_FLOORAREA,owner.getId());
+
+        given().
+                contentType(MediaType.APPLICATION_JSON).
+                body(owner).
+                when().
+                post("/owner/").then().assertThat().statusCode(201);
+
+        given().
+                contentType(MediaType.APPLICATION_JSON).
+                body(building).
+                when().
+                post("/building/").then().assertThat().statusCode(201);
+
+        Building rBuilding = get("/building/100").as(Building.class);
+
+        assertThat(SECOND_BUILDING_NAME, equalToIgnoringCase(rBuilding.getName()));
+
+        assertThat(owner.getId() , is(rBuilding.getIdOwner()));
+
+        delete("/owner/100").then().assertThat().statusCode(200);
+
+        rBuilding = get("/building/100").as(Building.class);
+
+        assertThat(rBuilding.getIdOwner(), is(0L));
+
     }
 }
