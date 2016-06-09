@@ -1,7 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-    <BUILDING  NAME="Kopacz" FLOORAREA="150"/>
-    <BUILDING NAME="Wysoki" FLOORAREA="140"/>
     <OWNER  NAME="Jasiu" YOB="1976"/>
     <OWNER  NAME="Jasiu" YOB="1980"/>
     <OWNER  NAME="Stefan" YOB="1990"/>

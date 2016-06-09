@@ -14,7 +14,7 @@ import java.sql.DriverManager;
  */
 public class ExportDatabase {
 
-    public static void main(String[] args) throws Exception {
+    public static void main() throws Exception {
         Connection jdbcConnection = DriverManager.getConnection(
                 "jdbc:hsqldb:hsql://localhost/buildingdb", "sa", "");
 

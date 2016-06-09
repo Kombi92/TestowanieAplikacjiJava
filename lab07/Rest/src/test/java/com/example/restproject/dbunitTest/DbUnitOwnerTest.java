@@ -1,6 +1,7 @@
 package com.example.restproject.dbunitTest;
 
 import com.example.restproject.domain.Owner;
+import com.example.restproject.helper.ExportDatabase;
 import com.example.restproject.service.OwnerManager;
 import com.jayway.restassured.RestAssured;
 import org.dbunit.Assertion;
